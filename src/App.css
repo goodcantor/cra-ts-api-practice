@@ -1,5 +1,16 @@
+* {
+  box-sizing: border-box;
+}
+
 .App {
   text-align: center;
+  max-width: 1400px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .App-logo {
