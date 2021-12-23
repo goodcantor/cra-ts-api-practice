@@ -15,7 +15,7 @@ const FullCard = styled.a`
   cursor: pointer;
   transition: all .3s ease;
   &:hover {
-    background: grey;
+    background: #e0e0e0;
   }
 
   .left {
@@ -29,21 +29,25 @@ const FullCard = styled.a`
     margin-right: 10px;
   }
   .company-name {
-    color: #21293c;
-    font-weight: 600;
-    font-size: 16px;
-    line-height: 24px;
-    display: flex;
-
     margin-block-start: 0em;
     margin-block-end: 0em;
     margin-inline-start: 0px;
     margin-inline-end: 0px;
+
+    color: #21293c;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 24px;
+    display: flex;
+    margin-bottom: 4px;
+
+    
   }
   .company-desc {
     color: #21293c;
     font-size: 16px;
-    line-height: 24px;
+    line-height: 1.3;
+    text-align: left;
 
     margin-block-start: 0em;
     margin-block-end: 0em;
@@ -64,26 +68,40 @@ const FullCard = styled.a`
     color: #21293c;
     font-weight: 600;
     font-size: 16px;
+    transition: all .1s ease-out;
+
+    &:hover {
+      background: green;
+      color: white;
+    }
+    &:active {
+      transform: scale(.95);
+    }
   }
 `
 
+interface CompanyCardProps {
+  src: string;
+  companyName: string;
+  companyDesc: string;
+  likesNumber: number;
+}
 
 
 
-
-const CompanyCard = (props: any) => {
+const CompanyCard = ({src, companyName, companyDesc, likesNumber}: CompanyCardProps) => {
   return (
     <FullCard>
       <div className="left">
-        <img className='img' src="https://yt3.ggpht.com/ytc/AKedOLS2SF7GWShAo24fNcUgHqyYBc4dCqaqikWch8gQiw=s900-c-k-c0x00ffffff-no-rj" alt="" />
+        <img className='img' src={src} alt={companyName} />
         <div className="text">
-          <h2 className="company-name">Apple inc</h2>
-          <p className="company-desc">We are changing the world</p>
+          <h2 className="company-name">{companyName}</h2>
+          <p className="company-desc">{companyDesc}</p>
         </div>
       </div>
       <div className="right">
         <div className="likes">
-          123
+          {likesNumber}
         </div>
       </div>
     </FullCard>
