@@ -20,7 +20,6 @@ const FullCard = styled.a`
 
   .left {
     display: flex;
-    /* align-items: center; */
   }
   .img {
     width: 80px;
@@ -40,8 +39,6 @@ const FullCard = styled.a`
     line-height: 24px;
     display: flex;
     margin-bottom: 4px;
-
-    
   }
   .company-desc {
     color: #21293c;
@@ -81,6 +78,7 @@ const FullCard = styled.a`
 `
 
 interface CompanyCardProps {
+  link?: string;
   src: string;
   companyName: string;
   companyDesc: string;
@@ -89,9 +87,9 @@ interface CompanyCardProps {
 
 
 
-const CompanyCard = ({src, companyName, companyDesc, likesNumber}: CompanyCardProps) => {
+const CompanyCard = ({link, src, companyName, companyDesc, likesNumber}: CompanyCardProps) => {
   return (
-    <FullCard>
+    <FullCard href={link}>
       <div className="left">
         <img className='img' src={src} alt={companyName} />
         <div className="text">
