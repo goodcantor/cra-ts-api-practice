@@ -19,9 +19,9 @@ const CompanyCard = ({
   const [like, setLike] = useState(Math.floor(Math.random() * 1000));
 
   function plusLike() {
-    setLike(like + 1)
+    setLike(like + 1);
   }
-  
+
   return (
     <FullCard href={link}>
       <LeftCard>
@@ -105,6 +105,7 @@ const RightCard = styled.div`
     align-items: center;
     border: 1px solid green;
     background: white;
+    user-select: none;
 
     color: #21293c;
     font-weight: 600;
