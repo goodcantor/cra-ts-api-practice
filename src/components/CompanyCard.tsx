@@ -9,8 +9,6 @@ interface CompanyCardProps {
   likesNumber: number;
 }
 
-
-
 const CompanyCard = ({
   link,
   src,
@@ -18,24 +16,11 @@ const CompanyCard = ({
   companyDesc,
   likesNumber,
 }: CompanyCardProps) => {
-  const massCompanyCard = [
-    {
-      src: "https://yt3.ggpht.com/ytc/AKedOLS2SF7GWShAo24fNcUgHqyYBc4dCqaqikWch8gQiw=s900-c-k-c0x00ffffff-no-rj",
-      companyName: "Apple inc",
-      companyDesc: "Lorem ipsum dolor sit.",
-      likesNumber: 34,
-    },
-    {
-      src: "https://res.cloudinary.com/crunchbase-production/image/upload/c_lpad,h_170,w_170,f_auto,b_white,q_auto:eco,dpr_1/vjubx9lvkuyc5hdbqf26",
-      companyName: "SuperDAO",
-      companyDesc: "Lorem ipsum dolor sit amet consectetur adipisicing.",
-      likesNumber: 484,
-    },
-  ];
-  const mapCompanyName = massCompanyCard.map(item => <h2></h2>)
+  
+
 
   return (
-    <FullCard href={link}>
+    <FullCard href={link}> 
       <LeftCard>
         <img src={src} alt={companyName} />
         <div>
@@ -43,7 +28,7 @@ const CompanyCard = ({
           <p>{companyDesc}</p>
         </div>
       </LeftCard>
-      <RightCard>
+      <RightCard> 
         <div>{likesNumber}</div>
       </RightCard>
     </FullCard>
