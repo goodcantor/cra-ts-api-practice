@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 
 interface CompanyCardProps {
@@ -6,7 +6,7 @@ interface CompanyCardProps {
   src: string;
   companyName: string;
   companyDesc: string;
-  likesNumber: number;
+  likesNumber?: number;
 }
 
 const CompanyCard = ({
@@ -16,11 +16,14 @@ const CompanyCard = ({
   companyDesc,
   likesNumber,
 }: CompanyCardProps) => {
+  const [like, setLike] = useState(Math.floor(Math.random() * 1000));
+
+  function plusLike() {
+    setLike(like + 1)
+  }
   
-
-
   return (
-    <FullCard href={link}> 
+    <FullCard href={link}>
       <LeftCard>
         <img src={src} alt={companyName} />
         <div>
@@ -28,8 +31,8 @@ const CompanyCard = ({
           <p>{companyDesc}</p>
         </div>
       </LeftCard>
-      <RightCard> 
-        <div>{likesNumber}</div>
+      <RightCard>
+        <div onClick={plusLike}>{like}</div>
       </RightCard>
     </FullCard>
   );
