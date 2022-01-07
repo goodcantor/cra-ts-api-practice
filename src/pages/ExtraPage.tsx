@@ -11,16 +11,22 @@ function ExtraPage() {
       .then((posts) => setPosts(posts));
   }, []);
 
-  const { userId, id, title, body } = item;
+
 
   return (
     <>
-      <CompanyCard
-        key={userId + id}
-        src="https://media.wired.co.uk/photos/60c8730fa81eb7f50b44037e/3:2/w_3329,h_2219,c_limit/1521-WIRED-Cat.jpeg"
-        companyName={title}
-        companyDesc={body}
-      />
+      {posts.map((post) => {
+        const { userId, id, title, body } = post;
+
+        return (
+          <CompanyCard
+            key={id}
+            src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-girl-cat-names-1606245046.jpg?crop=0.668xw:1.00xh;0.126xw,0&resize=640:*"
+            companyName={title}
+            companyDesc={body}
+          />
+        );
+      })}
     </>
   );
 }
