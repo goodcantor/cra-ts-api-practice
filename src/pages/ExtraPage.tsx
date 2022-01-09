@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from "react";
-import styled from "styled-components";
 
 import CompanyCard from "../components/CompanyCard";
 
 function ExtraPage() {
-  const [posts, setPosts] = useState([]);
+  const [post, setPost] = useState({});
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
+    fetch("https://jsonplaceholder.typicode.com/posts/1")
       .then((response) => response.json())
-      .then((posts) => setPosts(posts));
+      .then((post) => setPost(post));
   }, []);
 
-
+  console.log(post, setPost);
 
   return (
     <>
-      {posts.map((post) => {
-        const { userId, id, title, body } = post;
-
-        return (
-          <CompanyCard
-            key={id}
-            src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-girl-cat-names-1606245046.jpg?crop=0.668xw:1.00xh;0.126xw,0&resize=640:*"
-            companyName={title}
-            companyDesc={body}
-          />
-        );
-      })}
+      {/* <CompanyCard
+        key={post.id}
+        src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-girl-cat-names-1606245046.jpg?crop=0.668xw:1.00xh;0.126xw,0&resize=640:*"
+        companyName={post.title}
+        companyDesc={post.body}
+      /> */}
     </>
   );
 }
