@@ -3,10 +3,11 @@ import styled from "styled-components";
 
 interface ButtonProps {
   text: string;
+  func: any;
 }
 
-function Button({ text }: ButtonProps) {
-  return <ButtonMain>{text}</ButtonMain>;
+function Button({ text, func }: ButtonProps) {
+  return <ButtonMain onClick={func}>{text}</ButtonMain>;
 }
 
 export default Button;

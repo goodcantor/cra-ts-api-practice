@@ -6,14 +6,32 @@ import Button from "../components/Button";
 
 function ExtraPage() {
   const [post, setPost] = useState({});
-  const [count, setCount] = useState(1);
-  useEffect(() => {}, []);
-
-  function prev() {
-    console.log(count, setCount);
-    fetch(`https://jsonplaceholder.typicode.com/posts/${count}`)
+  const [id, setId] = useState(1);
+  useEffect(() => {
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((response) => response.json())
       .then((result) => setPost(result));
+  }, [id]);
+
+  function next() {
+    // fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    //   .then((response) => response.json())
+    //   .then((result) => setPost(result));
+    setId(id + 1);
+    console.log(id);
+    if (id >= 100) {
+      setId(1);
+    }
+  }
+  function prev() {
+    // fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    //   .then((response) => response.json())
+    //   .then((result) => setPost(result));
+    setId(id - 1);
+    console.log(id);
+    if (id <= 1) {
+      setId(100);
+    }
   }
 
   return (
@@ -28,9 +46,8 @@ function ExtraPage() {
         companyDesc={post.body}
       />
       <Buttons>
-        {/* @ts-ignore */}
-        <Button text="<" onClick={prev} />
-        {/* <Button text=">" onClick={next} /> */}
+        <Button text="<" func={prev} />
+        <Button text=">" func={next} />
       </Buttons>
     </>
   );
