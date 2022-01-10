@@ -17,6 +17,9 @@ function Api() {
       .then((response) => response.json())
       .then((result) => setPosts(result.posts));
   }, []);
+
+  if (posts === undefined) return <h1>Loading...</h1>;
+
   return (
     <>
       {posts.map((post) => {
