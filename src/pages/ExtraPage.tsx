@@ -30,7 +30,7 @@ function ExtraPage() {
     setId(id - 1);
     console.log(id);
     if (id <= 1) {
-      setId(100);
+      setId(100);     
     }
   }
 

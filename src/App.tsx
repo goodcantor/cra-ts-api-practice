@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import Api from "./pages/Api";
 
 import Header from "./components/Header";
+import ToDo from "./pages/ToDo";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/api" element={<Api />} />
         <Route path="/extra" element={<ExtraPage />} />
+        <Route path="/todo" element={<ToDo />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

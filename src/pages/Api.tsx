@@ -18,7 +18,7 @@ function Api() {
       .then((result) => setPosts(result.posts));
   }, []);
 
-  if (posts === undefined) return <h1>Loading...</h1>;
+  if (posts === undefined || posts.length === 0) return <h1>Loading...</h1>;
 
   return (
     <>
