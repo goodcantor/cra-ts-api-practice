@@ -2,21 +2,22 @@ import React from "react";
 import styled from "styled-components";
 import GlobalStyles from "../global";
 import Button from "../components/Button";
-import axios from "axios";
+// import axios from "axios";
 
 function ToDo() {
-  const [todoObj, setTodoObj] = React.useState([]);
-  React.useEffect(() => {
-    const url = "https://jsonplaceholder.typicode.com/todos/";
-    axios.get(url).then((resp) => {
-      setTodoObj(resp.data);
-    });
-  }, [todoObj]);
-
-  console.log(todoObj);
+  // const [todoObj, setTodoObj] = React.useState([]);
+  // React.useEffect(() => {
+  //   const url = "https://jsonplaceholder.typicode.com/todos/";
+  //   axios.get(url).then((resp) => {
+  //     setTodoObj(resp.data);
+  //   });
+  //   return () => {
+  //     setTodoObj([]);
+  //   };
+  // }, [todoObj]);
 
   function clicked() {
-    console.log("this is click");
+    console.log("Clicked");
   }
 
   return (
@@ -29,12 +30,7 @@ function ToDo() {
           </Wrapper>
         </Container>
       </ToDoFull>
-      {todoObj.map((value) => {
-        return (
-          //@ts-ignore
-          <div>{value.id} {value.title}</div>
-        )
-      })}
+      
       <GlobalStyles />
     </>
   );
