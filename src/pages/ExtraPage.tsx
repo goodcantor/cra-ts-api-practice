@@ -11,7 +11,7 @@ interface IPost {
 }
 
 function ExtraPage() {
-  const [post, setPost] = useState<IPost>({});
+  const [post, setPost] = useState<IPost>();
   const [id, setId] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {

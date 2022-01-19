@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from 'styled-components'
+import React from "react";
+import styled from "styled-components";
 
 const FullCard = styled.a`
   display: flex;
@@ -13,7 +13,7 @@ const FullCard = styled.a`
   padding: 24px;
   margin: 12px 0;
   cursor: pointer;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   &:hover {
     background: #e0e0e0;
   }
@@ -65,42 +65,44 @@ const FullCard = styled.a`
     color: #21293c;
     font-weight: 600;
     font-size: 16px;
-    transition: all .1s ease-out;
+    transition: all 0.1s ease-out;
 
     &:hover {
       background: green;
       color: white;
     }
     &:active {
-      transform: scale(.95);
+      transform: scale(0.95);
     }
   }
-`
+`;
 
 interface CompanyCardProps {
   link?: string;
   src: string;
   companyName: string;
   companyDesc: string;
-  likesNumber: number;
+  likesNumber?: number;
 }
 
-
-
-const CompanyCard = ({link, src, companyName, companyDesc, likesNumber}: CompanyCardProps) => {
+const CompanyCard = ({
+  link,
+  src,
+  companyName,
+  companyDesc,
+  likesNumber,
+}: CompanyCardProps) => {
   return (
     <FullCard href={link}>
       <div className="left">
-        <img className='img' src={src} alt={companyName} />
+        <img className="img" src={src} alt={companyName} />
         <div className="text">
           <h2 className="company-name">{companyName}</h2>
           <p className="company-desc">{companyDesc}</p>
         </div>
       </div>
       <div className="right">
-        <div className="likes">
-          {likesNumber}
-        </div>
+        <div className="likes">{likesNumber}</div>
       </div>
     </FullCard>
   );
