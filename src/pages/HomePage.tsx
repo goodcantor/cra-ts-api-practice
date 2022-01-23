@@ -36,6 +36,9 @@ function HomePage() {
   useEffect(() => {
     document.addEventListener("click", handleClick);
   }, []);
+  if (posts.length === 0) {
+    return <h1>LOADING</h1>;
+  }
   return (
     <>
       <SectionTitle title="Your next favorite thing 👇" />

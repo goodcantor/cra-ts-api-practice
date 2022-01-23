@@ -2,8 +2,14 @@ import React, { useState, useEffect } from "react";
 import CompanyCard from "../components/CompanyCard";
 import axios from "axios";
 
+interface IPost {
+  thumbnail: {
+    image_url: string;
+  };
+}
+
 function Api() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<IPost[]>([]);
   useEffect(() => {
     const baseUrl = "https://api.producthunt.com/v1";
     const endpoint = "/posts";
@@ -42,7 +48,6 @@ function Api() {
         return (
           <CompanyCard
             key={id}
-            // @ts-ignore
             src={thumbnail.image_url}
             companyName={name}
             companyDesc={tagline}
