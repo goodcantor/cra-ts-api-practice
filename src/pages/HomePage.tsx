@@ -2,6 +2,8 @@ import React, { useEffect, useState } from "react";
 import CompanyCard from "../components/CompanyCard";
 import SectionTitle from "../components/SectionTitle";
 
+import axios from "axios";
+
 const massCompanyCard = [
   {
     src: "https://yt3.ggpht.com/ytc/AKedOLS2SF7GWShAo24fNcUgHqyYBc4dCqaqikWch8gQiw=s900-c-k-c0x00ffffff-no-rj",
@@ -19,10 +21,14 @@ const massCompanyCard = [
 
 function HomePage() {
   const [posts, setPosts] = useState([]);
+  const url = "https://jsonplaceholder.typicode.com/posts";
+
   useEffect(() => {
-    fetch("https://jsonplaceholder.typicode.com/posts")
-      .then((response) => response.json())
-      .then((posts) => setPosts(posts));
+    axios.get(url).then((response) => setPosts(response.data));
+
+    // fetch("https://jsonplaceholder.typicode.com/posts")
+    //   .then((response) => response.json())
+    //   .then((posts) => setPosts(posts));
   }, []);
 
   const handleClick = (e: any) => {};
@@ -38,7 +44,6 @@ function HomePage() {
         const src = item.src;
         const companyName = item.companyName;
         const companyDesc = item.companyDesc;
-        const likesNumber = item.likesNumber;
 
         return (
           <CompanyCard
@@ -50,7 +55,7 @@ function HomePage() {
         );
       })}
       {posts.map((post) => {
-        const { userId, id, title, body } = post;
+        const { id, title, body } = post;
 
         return (
           <CompanyCard

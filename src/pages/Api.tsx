@@ -1,24 +1,38 @@
 import React, { useState, useEffect } from "react";
 import CompanyCard from "../components/CompanyCard";
+import axios from "axios";
 
 function Api() {
   const [posts, setPosts] = useState([]);
   useEffect(() => {
     const baseUrl = "https://api.producthunt.com/v1";
     const endpoint = "/posts";
-    fetch(`${baseUrl}${endpoint}`, {
+    const config = {
       headers: {
         Accept: "application/json",
         "Content-Type": "application/json",
         Authorization: "Bearer 7oZBpuzZ4f0lfoVU19hPMsTuOSKsTw-HHmd72ezv7YA",
         Host: "api.producthunt.com",
       },
-    })
-      .then((response) => response.json())
-      .then((result) => setPosts(result.posts));
+    };
+
+    axios
+      .get(`${baseUrl + endpoint}`, config)
+      .then((response) => setPosts(response.data.posts));
+
+    // fetch(`${baseUrl}${endpoint}`, {
+    //   headers: {
+    //     Accept: "application/json",
+    //     "Content-Type": "application/json",
+    //     Authorization: "Bearer 7oZBpuzZ4f0lfoVU19hPMsTuOSKsTw-HHmd72ezv7YA",
+    //     Host: "api.producthunt.com",
+    //   },
+    // })
+    //   .then((response) => response.json())
+    //   .then((result) => setPosts(result.posts));
   }, []);
 
-  if (posts === undefined || posts.length === 0) return <h1>Loading...</h1>;
+  if (posts.length === 0) return <h1>Loading...</h1>;
 
   return (
     <>
