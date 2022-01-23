@@ -1,5 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
+
+interface CompanyCardProps {
+  link?: string;
+  src: string;
+  companyName: string;
+  companyDesc: string;
+  likesNumber?: number;
+}
+
+const CompanyCard = ({
+  link,
+  src,
+  companyName,
+  companyDesc,
+  likesNumber,
+}: CompanyCardProps) => {
+  const [like, setLike] = useState(Math.floor(Math.random() * 1000));
+
+  function plusLike() {
+    setLike(like + 1);
+  }
+
+  return (
+    <FullCard href={link}>
+      <LeftCard>
+        <img src={src} alt={companyName} />
+        <div>
+          <h2>{companyName}</h2>
+          <p>{companyDesc}</p>
+        </div>
+      </LeftCard>
+      <RightCard>
+        <div onClick={plusLike}>{like}</div>
+      </RightCard>
+    </FullCard>
+  );
+};
+
+export default CompanyCard;
 
 const FullCard = styled.a`
   display: flex;
@@ -17,17 +56,19 @@ const FullCard = styled.a`
   &:hover {
     background: #e0e0e0;
   }
+`;
 
-  .left {
-    display: flex;
-  }
-  .img {
+const LeftCard = styled.div`
+  display: flex;
+
+  & > img {
     width: 80px;
     height: 80px;
     border-radius: 8px;
     margin-right: 10px;
   }
-  .company-name {
+
+  & > div > h2 {
     margin-block-start: 0em;
     margin-block-end: 0em;
     margin-inline-start: 0px;
@@ -40,7 +81,8 @@ const FullCard = styled.a`
     display: flex;
     margin-bottom: 4px;
   }
-  .company-desc {
+
+  & > div > p {
     color: #21293c;
     font-size: 16px;
     line-height: 1.3;
@@ -51,8 +93,10 @@ const FullCard = styled.a`
     margin-inline-start: 0px;
     margin-inline-end: 0px;
   }
+`;
 
-  .likes {
+const RightCard = styled.div`
+  & > div {
     border-radius: 50%;
     width: 50px;
     height: 50px;
@@ -61,6 +105,7 @@ const FullCard = styled.a`
     align-items: center;
     border: 1px solid green;
     background: white;
+    user-select: none;
 
     color: #21293c;
     font-weight: 600;
@@ -76,36 +121,3 @@ const FullCard = styled.a`
     }
   }
 `;
-
-interface CompanyCardProps {
-  link?: string;
-  src: string;
-  companyName: string;
-  companyDesc: string;
-  likesNumber?: number;
-}
-
-const CompanyCard = ({
-  link,
-  src,
-  companyName,
-  companyDesc,
-  likesNumber,
-}: CompanyCardProps) => {
-  return (
-    <FullCard href={link}>
-      <div className="left">
-        <img className="img" src={src} alt={companyName} />
-        <div className="text">
-          <h2 className="company-name">{companyName}</h2>
-          <p className="company-desc">{companyDesc}</p>
-        </div>
-      </div>
-      <div className="right">
-        <div className="likes">{likesNumber}</div>
-      </div>
-    </FullCard>
-  );
-};
-
-export default CompanyCard;

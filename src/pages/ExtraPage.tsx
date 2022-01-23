@@ -11,7 +11,7 @@ interface IPost {
 }
 
 function ExtraPage() {
-  const [post, setPost] = useState<IPost>();
+  const [post, setPost] = useState({});
   const [id, setId] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
@@ -40,19 +40,19 @@ function ExtraPage() {
     }
   }
 
+  // @ts-ignore
+  const { title, body } = post;
+
   return (
     <>
       {isLoading ? (
         <h1 style={{ height: "100px" }}>LOADING...</h1>
       ) : (
         <CompanyCard
-          // @ts-ignore
-          key={post.id}
+          key={id}
           src="https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/best-girl-cat-names-1606245046.jpg?crop=0.668xw:1.00xh;0.126xw,0&resize=640:*"
-          // @ts-ignore
-          companyName={post.title}
-          // @ts-ignore
-          companyDesc={post.body}
+          companyName={title}
+          companyDesc={body}
         />
       )}
 
