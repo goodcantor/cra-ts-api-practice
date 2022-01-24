@@ -4,6 +4,12 @@ import SectionTitle from "../components/SectionTitle";
 
 import axios from "axios";
 
+interface IPost {
+  id: number;
+  title: string;
+  body: string;
+}
+
 const massCompanyCard = [
   {
     src: "https://yt3.ggpht.com/ytc/AKedOLS2SF7GWShAo24fNcUgHqyYBc4dCqaqikWch8gQiw=s900-c-k-c0x00ffffff-no-rj",
@@ -20,15 +26,11 @@ const massCompanyCard = [
 ];
 
 function HomePage() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState<IPost[]>([] as IPost[]);
   const url = "https://jsonplaceholder.typicode.com/posts";
 
   useEffect(() => {
-    axios.get(url).then((response) => setPosts(response.data));
-
-    // fetch("https://jsonplaceholder.typicode.com/posts")
-    //   .then((response) => response.json())
-    //   .then((posts) => setPosts(posts));
+    axios.get<IPost[]>(url).then((response) => setPosts(response.data));
   }, []);
 
   const handleClick = (e: any) => {};

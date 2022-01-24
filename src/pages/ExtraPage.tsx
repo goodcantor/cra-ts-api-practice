@@ -11,13 +11,13 @@ interface IPost {
 }
 
 function ExtraPage() {
-  const [post, setPost] = useState({});
+  const [post, setPost] = useState<IPost>({} as IPost);
   const [id, setId] = useState(1);
   const [isLoading, setIsLoading] = useState(false);
   useEffect(() => {
     setIsLoading(true);
     axios
-      .get(`https://jsonplaceholder.typicode.com/posts/${id}`)
+      .get<IPost>(`https://jsonplaceholder.typicode.com/posts/${id}`)
       .then((result) => setPost(result.data));
   }, [id]);
 
@@ -40,7 +40,6 @@ function ExtraPage() {
     }
   }
 
-  // @ts-ignore
   const { title, body } = post;
 
   return (
