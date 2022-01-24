@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import ExtraPage from "./pages/ExtraPage";
 import HomePage from "./pages/HomePage";
 import NotFound from "./pages/NotFound";
+import ProductPage from "./pages/ProductPage";
 
 import Api from "./pages/Api";
 
@@ -22,6 +23,7 @@ function App() {
         <Route path="/api" element={<Api />} />
         <Route path="/extra" element={<ExtraPage />} />
         <Route path="/todo" element={<ToDo />} />
+        <Route path="/api/:id" element={<ProductPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </div>

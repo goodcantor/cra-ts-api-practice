@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 interface CompanyCardProps {
   link?: string;
@@ -7,6 +8,7 @@ interface CompanyCardProps {
   companyName: string;
   companyDesc: string;
   likesNumber?: number;
+  id?: number;
 }
 
 const CompanyCard = ({
@@ -15,6 +17,7 @@ const CompanyCard = ({
   companyName,
   companyDesc,
   likesNumber,
+  id,
 }: CompanyCardProps) => {
   const [like, setLike] = useState(Math.floor(Math.random() * 1000));
 
@@ -23,7 +26,7 @@ const CompanyCard = ({
   }
 
   return (
-    <FullCard href={link}>
+    <Link to={`/api/${id}`} className="link-style">
       <LeftCard>
         <img src={src} alt={companyName} />
         <div>
@@ -34,14 +37,14 @@ const CompanyCard = ({
       <RightCard>
         <div onClick={plusLike}>{like}</div>
       </RightCard>
-    </FullCard>
+    </Link>
   );
 };
 
 export default CompanyCard;
 
 const FullCard = styled.a`
-  display: flex;
+  /* display: flex;
   justify-content: space-between;
   align-items: center;
   max-width: 1000px;
@@ -55,7 +58,7 @@ const FullCard = styled.a`
   transition: all 0.3s ease;
   &:hover {
     background: #e0e0e0;
-  }
+  } */
 `;
 
 const LeftCard = styled.div`
