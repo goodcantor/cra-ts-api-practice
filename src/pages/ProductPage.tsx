@@ -12,7 +12,7 @@ interface IPost {
   screenshot_url: { [key: string]: string };
 }
 
-function ProductPage(props: any) {
+function ProductPage() {
   const location = useParams();
   const [post, setPost] = useState<IPost>({} as IPost);
   useEffect(() => {
