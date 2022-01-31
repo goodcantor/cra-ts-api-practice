@@ -12,7 +12,7 @@ function Header() {
             <HeaderList to="/">Home</HeaderList>
             <HeaderList to="/api">Api</HeaderList>
             <HeaderList to="/extra">Extra</HeaderList>
-            <HeaderList to="/todo">ToDo</HeaderList>
+            <HeaderList to="/countries">Countries</HeaderList>
           </HeaderMenu>
         </Container>
       </HeaderMain>

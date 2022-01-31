@@ -4,13 +4,19 @@ import GlobalStyles from "../global";
 import Button from "../components/Button";
 import axios from "axios";
 
-function ToDo() {
-  const [country, setCountry] = React.useState([]);
+interface ICountry {
+  flags: {
+    png: string;
+  };
+  name: {
+    common: string;
+  };
+}
+
+function Countries() {
+  const [country, setCountry] = React.useState<ICountry[]>([]);
   const [value, setValue] = React.useState("");
 
-  // const filtered = country.filter((one) => {
-  //   return one.name.toLowerCase().includes(value.toLowerCase());
-  // });
   const filteredCountry = country.filter((coun) => {
     return coun.name.common.toLowerCase().includes(value.toLowerCase());
   });
@@ -59,7 +65,7 @@ function ToDo() {
   );
 }
 
-export default ToDo;
+export default Countries;
 
 const ToDoFull = styled.div`
   width: 100%;

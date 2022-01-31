@@ -11,7 +11,7 @@ import ProductPage from "./pages/ProductPage";
 import Api from "./pages/Api";
 
 import Header from "./components/Header";
-import ToDo from "./pages/ToDo";
+import Countries from "./pages/Countries";
 
 function App() {
   return (
@@ -22,7 +22,7 @@ function App() {
         <Route path="/" element={<HomePage />} />
         <Route path="/api" element={<Api />} />
         <Route path="/extra" element={<ExtraPage />} />
-        <Route path="/todo" element={<ToDo />} />
+        <Route path="/Countries" element={<Countries />} />
         <Route path="/api/:id" element={<ProductPage />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
